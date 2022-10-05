@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('food_statuses', function (Blueprint $table) {
+        Schema::create('option_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Food_Status_Name', 128);
+            $table->string('Option_Detail_Name', 128);
+            $table->double('Option_Detail_Price', 8, 2);
+            $table->integer('isActive');
+            $table->integer('option_id');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('food_statuses');
+        Schema::dropIfExists('option_details');
     }
 };

@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('toppings', function (Blueprint $table) {
-            $table->increments('Topping_Id');
+            $table->increments('id');
             $table->string('Topping_Name', 128);
-            $table->double('Topping_Price', 4, 2);
+            $table->double('Topping_Price', 8, 2);
             $table->integer('isActive');
             $table->timestamps();
         });

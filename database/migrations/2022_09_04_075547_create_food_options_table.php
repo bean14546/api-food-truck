@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('map_food_food_statuses', function (Blueprint $table) {
+        Schema::create('food_options', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('food_id');
-            $table->integer('food_status_id');
+            $table->integer('option_id');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('map_food_food_statuses');
+        Schema::dropIfExists('food_options');
     }
 };

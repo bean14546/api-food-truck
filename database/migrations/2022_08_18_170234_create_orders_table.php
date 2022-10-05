@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->increments('Order_Id');
-            $table->integer('user_id');
-            $table->integer('coupon_id');
+            $table->increments('id');
+            $table->text('Chef_Note'); // Note สำหรับ เชฟ กรณี order status fail
+            $table->text('Order_Price'); // ราคารวมทุกสินค้าที่ลูกค้าสั่งหักลบกับส่วนลดของคูปอง
+            $table->integer('coupon_id') -> nullable();
             $table->integer('order_status_id');
-            $table->text('Order_Note');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
