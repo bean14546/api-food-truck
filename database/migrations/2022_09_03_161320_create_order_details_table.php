@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('option_lists', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('Amount');
+            $table->double('Price', 8, 2); // ราคารวม food option topping
+            $table->string('Note') -> nullable();
+            $table->integer('order_id');
+            $table->integer('food_id');
             $table->integer('option_id');
-            $table->string('Option_Lists_Name', 128);
-            $table->double('Option_Lists_Price', 4, 2);
-            $table->integer('isActive');
+            $table->integer('topping_id') -> nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('option_lists');
+        Schema::dropIfExists('order_details');
     }
 };

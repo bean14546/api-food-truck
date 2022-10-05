@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('my_coupons', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('isActive');
             $table->integer('coupon_id');
             $table->integer('user_id');
-            $table->integer('Amount');
-            $table->integer('isActive');
             $table->timestamps();
         });
     }

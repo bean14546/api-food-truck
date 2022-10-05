@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class OrderStatus extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'Order_Status_Name'
+    ];
+
+    // 1 order status มีได้ในหลาย order
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
