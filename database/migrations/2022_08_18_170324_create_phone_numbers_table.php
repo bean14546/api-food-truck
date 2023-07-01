@@ -11,15 +11,15 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('phone_numbers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('Phone_Number', 24);
-            $table->integer('user_id') -> nullable();
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('phone_numbers', function (Blueprint $table) {
+    //         $table->increments('id');
+    //         $table->string('Phone_Number', 24);
+    //         $table->integer('user_id') -> nullable();
+    //         $table->timestamps();
+    //     });
+    // }
 
     /**
      * Reverse the migrations.

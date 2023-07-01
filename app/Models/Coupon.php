@@ -19,6 +19,9 @@ class Coupon extends Model
         'Coupon_End_Date'
     ];
 
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
+
     // 1 coupon มีได้หลาย user
     public function users()
     {

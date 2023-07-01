@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('Topping_Name', 128);
             $table->double('Topping_Price', 8, 2);
-            $table->integer('isActive');
+            $table->boolean('isActive');
             $table->timestamps();
         });
     }

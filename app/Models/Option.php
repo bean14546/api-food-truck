@@ -10,9 +10,13 @@ class Option extends Model
     use HasFactory;
 
     protected $fillable = [
-        'Option_Name'
+        'Option_Name',
+        'Option_Details'
     ];
 
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
+    
     // 1 option มีได้หลาย option detail
     public function optionDetails()
     {

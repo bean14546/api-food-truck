@@ -15,6 +15,9 @@ class Topping extends Model
         'isActive'
     ];
 
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
+
     // 1 topping มีได้หลาย order
     public function orders()
     {

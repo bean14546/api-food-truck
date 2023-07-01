@@ -13,4 +13,7 @@ class CategoryFood extends Model
         'food_id',
         'category_id'
     ];
+
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
 }

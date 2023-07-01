@@ -2,25 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\OrderCollection;
+use App\Http\Resources\OrderResource;
 use Illuminate\Http\Request;
 use App\Models\Order;
 class OrderController extends Controller
 {
+    
     public function getAllOrder()
     {
+        $order = new OrderCollection(Order::all());
+        
         $response = [
             'status' => 'Success',
-            'data' => Order::all()
+            'data' => $order
         ];
         
         return response($response, 200);
     }
 
-    public function getOneOrder($id)
+    public function getAndCountOrder()
     {
+        $food = new OrderCollection(Order::paginate(10));
+        
         $response = [
             'status' => 'Success',
-            'data' =>   Order::whereIn('Order_Id', [$id])->get()
+            'result' => $food->response()->getData()
+        ];
+        
+        return response($response, 200);
+    }
+
+    public function getOneOrder(Order $id)
+    {
+        $order = new OrderResource($id);
+
+        $response = [
+            'status' => 'Success',
+            'data' => $order
         ];
 
         return response($response, 200);
@@ -29,10 +48,11 @@ class OrderController extends Controller
     public function createOrder(Request $request)
     {
         $validate = $request->validate([
-            'Order_Price' => 'require',
             'order_status_id' => 'required',
+            'isTakeaway' => 'required',
             'user_id' => 'required',
-            'coupon_id' => 'integer',
+            // 'Chef_Note' => 'string'
+            // 'coupon_id' => 'integer',
         ]);
 
         $order = Order::create($validate);

@@ -10,8 +10,13 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'Category_Name'
+        'Category_Image',
+        'Category_Name',
+        'Category_Description'
     ];
+
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
 
     // 1 category มีได้หลาย food
     public function food()

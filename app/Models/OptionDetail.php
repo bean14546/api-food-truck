@@ -16,6 +16,9 @@ class OptionDetail extends Model
         'isActive'
     ];
 
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
+    
     // 1 option detail อยู่ได้ 1 option (เช่น ความเผ็ด อยู่ได้ใน option ความเผ็ดเท่านั้น จะไปอยู่ใน option น้ำซุปไม่ได้)
     public function option()
     {

@@ -11,14 +11,14 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('order_statuses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('Order_Status_Name', 128);
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('order_statuses', function (Blueprint $table) {
+    //         $table->increments('id');
+    //         $table->string('Order_Status_Name', 128);
+    //         $table->timestamps();
+    //     });
+    // }
 
     /**
      * Reverse the migrations.

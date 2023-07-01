@@ -13,6 +13,9 @@ class OrderStatus extends Model
         'Order_Status_Name'
     ];
 
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
+
     // 1 order status มีได้ในหลาย order
     public function orders()
     {

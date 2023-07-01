@@ -13,4 +13,7 @@ class FoodOption extends Model
         'food_id',
         'option_id'
     ];
+
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
 }

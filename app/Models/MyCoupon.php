@@ -14,4 +14,7 @@ class MyCoupon extends Model
         'coupon_id',
         'user_id'
     ];
+
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
 }

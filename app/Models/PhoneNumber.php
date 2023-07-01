@@ -14,6 +14,9 @@ class PhoneNumber extends Model
         'user_id'
     ];
 
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
+
     // 1 phone number เป็นของ 1 user
     public function user()
     {

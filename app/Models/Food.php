@@ -13,13 +13,20 @@ class Food extends Model
         'Food_Name',
         'Food_Price',
         'Food_Description',
-        'Food_Image'
+        'Food_Image',
+        'category_id',
+        'is_recommend',
+        'is_new',
+        'is_active'
     ];
 
-    // 1 food อยู่ได้หลาย category
-    public function categories()
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
+
+    // 1 food อยู่ได้ 1 category
+    public function category()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     // 1 food มีหลาย food status

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\OptionDetailCollection;
+use App\Http\Resources\OptionDetailResource;
 use Illuminate\Http\Request;
 use App\Models\OptionDetail;
 
@@ -9,19 +11,34 @@ class OptionDetailController extends Controller
 {
     public function getAllOptionDetail()
     {
+        $optionDetail = new OptionDetailCollection(OptionDetail::all());
+        
         $response = [
             'status' => 'Success',
-            'data' => OptionDetail::all()
+            'data' => $optionDetail
         ];
         
         return response($response, 200);
     }
 
-    public function getOneOptionDetail($id)
+    public function getAndCountOptionDetail()
     {
+        $optionDetail = new OptionDetailCollection(OptionDetail::paginate(10));
         $response = [
             'status' => 'Success',
-            'data' =>   OptionDetail::whereIn('Option_List_Id', [$id])->get()
+            'result' => $optionDetail->response()->getData(true)
+        ];
+        
+        return response($response, 200);
+    }
+
+    public function getOneOptionDetail(OptionDetail $id)
+    {
+        $optionDetail = new OptionDetailResource($id);
+
+        $response = [
+            'status' => 'Success',
+            'data' =>  $optionDetail
         ];
 
         return response($response, 200);
@@ -67,6 +84,20 @@ class OptionDetailController extends Controller
             'status' => 'Success',
         ];
         
+        return response($response, 200);
+    }
+
+    public function searchOptionDetail(Request $request)
+    {
+        $keyword = $request->query('keyword');
+        if ($keyword) {
+            $optionDetail = new OptionDetailCollection(OptionDetail::where('Option_Detail_Name', 'like', '%' . $keyword . '%')->paginate());
+        }
+        $response = [
+            'status' => 'Success',
+            'result' => $optionDetail->response()->getData(true)
+        ];
+
         return response($response, 200);
     }
 }

@@ -17,7 +17,9 @@ class OptionResource extends JsonResource
         return [
             "id" => $this->id,
             "Option_Name" => $this->Option_Name,
-            "Option_Detail" => $this->optionDetails, // ฟังก์ชัน
+            "Option_Detail" => $this->optionDetails, // ฟังก์ชันม
+            "created_at" => $this->created_at,
+            "updated_at" => $this->updated_at
         ];
     }
 }

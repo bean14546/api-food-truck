@@ -10,12 +10,15 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'Chef_Note',
-        'Order_Price',
+        // 'Order_Price',
+        'order_status_id',
         'user_id',
-        'coupon_id',
-        'order_status_id'
+        // 'Chef_Note',
+        // 'coupon_id',
     ];
+
+    // ซ่อน pivot
+    protected $hidden = ['pivot'];
 
     // 1 order ผู้ใช้สามารถเลือกอาหารได้หลายชนิด
     public function food()
@@ -51,5 +54,10 @@ class Order extends Model
     public function orderStatus()
     {
         return $this->belongsTo(OrderStatus::class);
+    }
+
+    public function orderList()
+    {
+        return $this->hasMany(OrderList::class, 'order_id');
     }
 }

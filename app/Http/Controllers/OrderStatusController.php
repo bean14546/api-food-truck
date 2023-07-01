@@ -15,6 +15,19 @@ class OrderStatusController extends Controller
         
         return response($response, 200);
     }
+    
+    public function getAndCountStatus()
+    {
+        $orderStatus = OrderStatus::paginate(10);
+        
+        $response = [
+            'status' => 'Success',
+            'result' => $orderStatus
+        ];
+        
+        return response($response, 200);
+    }
+
 
     public function getOneOrderStatus($id)
     {
@@ -72,12 +85,12 @@ class OrderStatusController extends Controller
 
         $keyword = $request->query('keyword');
         if ($keyword) {
-            $orderStatus = OrderStatus::where('Order_Status_Name', 'like', '%' . $keyword . '%')->get();
+            $orderStatus = OrderStatus::where('Order_Status_Name', 'like', '%' . $keyword . '%')->paginate(10);
         }
             
         $response = [
             'status' => 'Success',
-            'data' => $orderStatus
+            'result' => $orderStatus
         ];
 
         return response($response, 200);

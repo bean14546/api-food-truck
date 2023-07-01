@@ -11,10 +11,22 @@ class OptionController extends Controller
     public function getAllOption()
     {
         $option = new OptionCollection(Option::all());
-
+        
         $response = [
             'status' => 'Success',
             'data' => $option
+        ];
+        
+        return response($response, 200);
+    }
+
+    public function getAndCountOption()
+    {
+        $option = new OptionCollection(Option::paginate(10));
+
+        $response = [
+            'status' => 'Success',
+            'result' => $option->response()->getData()
         ];
         
         return response($response, 200);
@@ -74,16 +86,13 @@ class OptionController extends Controller
 
     public function searchOption(Request $request)
     {
-        $option = new OptionCollection(Option::all());
-
         $keyword = $request->query('keyword');
         if ($keyword) {
-            $option = Option::where('Option_Name', 'like', '%' . $keyword . '%')->get();
+            $option = new OptionCollection(Option::where('Option_Name', 'like', '%' . $keyword . '%')->paginate(10));
         }
-            
         $response = [
             'status' => 'Success',
-            'data' => $option
+            'result' => $option->response()->getData(true)
         ];
 
         return response($response, 200);

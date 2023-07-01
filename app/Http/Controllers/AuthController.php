@@ -2,45 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class AuthController extends Controller
-{
-    public function register(Request $request){
-        $validate = $request->validate([
-            'User_First_Name' => 'required|string|max:100',
-            'User_Last_Name' => 'required|string|max:100',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed|min:8',
-        ]);
-
-        $user = User::create([
-            'User_First_Name' => $validate['User_First_Name'],
-            'User_Last_Name' => $validate['User_Last_Name'],
-            'email' => $validate['email'],
-            'password' => bcrypt($validate['password']),
-        ]);
-
-        $token = $user->createToken($request->userAgent())->plainTextToken;
-
-        $response = [
-            'user' => $user,
-            'token' => $token,
-            'status' => 'Success'
-        ];
-
-        return response($response,200);
-    }
-    
+{   
     public function login(Request $request){
         $validate = $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string|min:8'
+            'username' => 'required|string',
+            'password' => 'required|string|min:4'
         ]);
         // ตรวจสอบ User ที่  login เข้ามาว่ามี user นี้ใน Database หรือไม่
-        $user = User::where('email', $validate['email'])->first();
+        $user = Admin::where('username', $validate['username'])->first();
 
         // ตรวจสอบเงื่อนไขการ Login
         if (!$user || !Hash::check($validate['password'], $user->password)) {
@@ -61,17 +35,37 @@ class AuthController extends Controller
                 'token' => $token,
                 'status' => 'Success'
             ];
-            return response($response,200);
+            return response($response, 200);
         }
     }
 
-    public function logout(Request $request){
+    public function register(Request $request){
+        $validate = $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string|min:4'
+        ]);
         
-        $request->user()->currentAccessToken()->delete();
+        $user = Admin::create([
+            'username' => $validate['username'],
+            'password' => bcrypt($validate['password']),
+        ]);
+
+        $response = [
+            'status' => 'Register Success',
+            'data' => $user
+        ];
+
+        return response($response, 200);
+    }
+
+    public function logout(Request $request){
+        // $request->user()->currentAccessToken()->delete();
+        $request->user()->currentAccessToken();
         
         $response = [
-            'status' => 'Success'
+            'status' => 'Logout Success',
+            'data' => $request
         ];
-        return response($response,200);
+        return response($response, 200);
     }
 }

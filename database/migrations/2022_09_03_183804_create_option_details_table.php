@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('Option_Detail_Name', 128);
             $table->double('Option_Detail_Price', 8, 2);
-            $table->integer('isActive');
+            $table->boolean('isActive');
             $table->integer('option_id');
             $table->timestamps();
         });

@@ -34,6 +34,22 @@ class UserController extends Controller
         return response($response, 200);
     }
 
+    public function createUser(Request $request)
+    {
+        $validate = $request->validate([
+            'username' => 'string|required',
+        ]);
+
+        $user = User::create($validate);
+
+        $response = [
+            'status' => 'Success',
+            'data' => $user
+        ];
+
+        return response($response, 200);
+    }
+
     public function updateUser(Request $request, $id)
     {
         $user = User::find($id);
@@ -64,11 +80,7 @@ class UserController extends Controller
 
         $keyword = $request->query('keyword');
         if ($keyword) {
-            $user = User::where('User_First_Name', 'like', '%' . $keyword . '%')
-                    ->orWhere('User_Last_Name', 'like', '%' . $keyword . '%')    
-                    ->orWhere('User_Point', 'like', '%' . $keyword . '%')    
-                    ->orWhere('email', 'like', '%' . $keyword . '%')    
-                    ->get();
+            $user = User::where('username', 'like', '%' . $keyword . '%')->get();
         }
             
         $response = [

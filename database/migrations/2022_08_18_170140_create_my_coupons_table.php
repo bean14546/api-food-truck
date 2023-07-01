@@ -11,16 +11,16 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('my_coupons', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('isActive');
-            $table->integer('coupon_id');
-            $table->integer('user_id');
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('my_coupons', function (Blueprint $table) {
+    //         $table->increments('id');
+    //         $table->integer('isActive');
+    //         $table->integer('coupon_id');
+    //         $table->integer('user_id');
+    //         $table->timestamps();
+    //     });
+    // }
 
     /**
      * Reverse the migrations.

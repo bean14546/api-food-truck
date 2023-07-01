@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\DB;
 
 class CategoryResource extends JsonResource
 {
@@ -14,10 +15,15 @@ class CategoryResource extends JsonResource
      */
     public function toArray($request)
     {
+
         return [
             "id" => $this->id,
             "Category_Name" => $this->Category_Name,
-            "Food" => $this->food // ฟังก์ชัน
+            "Category_Description" => $this->Category_Description,
+            "Category_Image" => $this->Category_Image,
+            "Food" => $this->food, // ฟังก์ชัน
+            "created_at" => $this->created_at,
+            "updated_at" => $this->updated_at
         ];
     }
 }

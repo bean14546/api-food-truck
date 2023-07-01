@@ -8,9 +8,23 @@ class ToppingController extends Controller
 {
     public function getAllTopping()
     {
+        $stock = Topping::all();
+        
         $response = [
             'status' => 'Success',
-            'data' => Topping::all()
+            'data' => $stock
+        ];
+        
+        return response($response, 200);
+    }
+
+    public function getAndCountTopping()
+    {
+        $topping = Topping::paginate(10);
+
+        $response = [
+            'status' => 'Success',
+            'result' => $topping
         ];
         
         return response($response, 200);
@@ -71,18 +85,16 @@ class ToppingController extends Controller
 
     public function searchTopping(Request $request)
     {
-        $topping = Topping::all();
-
         $keyword = $request->query('keyword');
         if ($keyword) {
             $topping = Topping::where('Topping_Name', 'like', '%' . $keyword . '%')
                     ->orWhere('Topping_Price', 'like', '%' . $keyword . '%')    
-                    ->get();
+                    ->paginate(10);
         }
             
         $response = [
             'status' => 'Success',
-            'data' => $topping
+            'result' => $topping
         ];
 
         return response($response, 200);

@@ -33,7 +33,7 @@ class FoodOptionController extends Controller
     {
         $validate = $request->validate([
             'food_id' => 'required',
-            'food_status_id' => 'required',
+            'option_id' => 'required',
         ]);
 
         $foodOption = FoodOption::create($validate);
