@@ -72,10 +72,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('optionDetail/create', [OptionDetailController::class, 'createOptionDetail']);
     Route::put('optionDetail/update/{id}', [OptionDetailController::class, 'updateOptionDetail']);
     Route::delete('optionDetail/delete/{id}', [OptionDetailController::class, 'deleteOptionDetail']);
-    // Order Status
-    Route::post('orderStatus/create', [OrderStatusController::class, 'createOrderStatus']);
-    Route::put('orderStatus/update/{id}', [OrderStatusController::class, 'updateOrderStatus']);
-    Route::delete('orderStatus/delete/{id}', [OrderStatusController::class, 'deleteOrderStatus']);
     // Countdown
     Route::post('countdown/create', [TimeCountdownController::class, 'createCountdown']);
     Route::put('countdown/update/{id}', [TimeCountdownController::class, 'updateCountdown']);
@@ -102,11 +98,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('foodTopping/create', [FoodToppingController::class, 'createFoodTopping']);
     Route::put('foodTopping/update/{id}', [FoodToppingController::class, 'updateFoodTopping']);
     Route::delete('foodTopping/delete/{id}', [FoodToppingController::class, 'deleteFoodTopping']);
-    // My Coupon
-    Route::post('myCoupon/create', [MyCouponController::class, 'createMyCoupon']);
-    Route::put('myCoupon/update/{id}', [MyCouponController::class, 'updateMyCoupon']);
-    Route::delete('myCoupon/delete/{id}', [MyCouponController::class, 'deleteMyCoupon']);
-
     // Order List Option
     Route::post('orderListOption/create', [OrderListOptionController::class, 'createOrderListOption']);
     Route::put('orderListOption/update/{id}', [OrderListOptionController::class, 'updateOrderListOption']);
@@ -163,18 +154,6 @@ Route::get('optionDetail/getAll', [OptionDetailController::class, 'getAllOptionD
 Route::get('optionDetail/getOne/{id}', [OptionDetailController::class, 'getOneOptionDetail']);
 Route::get('optionDetail/getAndCount', [OptionDetailController::class, 'getAndCountOptionDetail']);
 Route::get('optionDetail/search', [OptionDetailController::class, 'searchOptionDetail']);
-// Order
-Route::get('order/getAll', [OrderController::class, 'getAllOrder']);
-Route::get('order/getAndCount', [OrderController::class, 'getAndCountOrder']);
-Route::get('order/getOne/{id}', [OrderController::class, 'getOneOrder']);
-Route::post('order/create', [OrderController::class, 'createOrder']);
-Route::put('order/update/{id}', [OrderController::class, 'updateOrder']);
-Route::delete('order/delete/{id}', [OrderController::class, 'deleteOrder']);
-// Order Status
-Route::get('orderStatus/getAll', [OrderStatusController::class, 'getAllOrderStatus']);
-Route::get('orderStatus/getOne/{id}', [OrderStatusController::class, 'getOneOrderStatus']);
-Route::get('orderStatus/getAndCount', [OrderStatusController::class, 'getAndCountStatus']);
-Route::get('orderStatus/search', [OrderStatusController::class, 'searchOrderStatus']);
 // Countdown
 Route::get('countdown/getAll', [TimeCountdownController::class, 'getAllCountdown']);
 Route::get('countdown/getOne/{id}', [TimeCountdownController::class, 'getOneCountdown']);

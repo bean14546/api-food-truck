@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
             $table->string('ingredient');
-            $table->integer('cost');
+            $table->decimal('cost');
             $table->integer('stock_id');
             $table->integer('ingredient_group_id');
             $table->integer('ingredient_unit_id');

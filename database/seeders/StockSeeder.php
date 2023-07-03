@@ -45,6 +45,21 @@ class StockSeeder extends Seeder
         $data10 = [
             'quantity' => 0
         ];
+        $data11 = [
+            'quantity' => 0
+        ];
+        $data12 = [
+            'quantity' => 0
+        ];
+        $data13 = [
+            'quantity' => 0
+        ];
+        $data14 = [
+            'quantity' => 0
+        ];
+        $data15 = [
+            'quantity' => 0
+        ];
 
         Stock::create($data1);
         Stock::create($data2);
@@ -56,5 +71,10 @@ class StockSeeder extends Seeder
         Stock::create($data8);
         Stock::create($data9);
         Stock::create($data10);
+        Stock::create($data11);
+        Stock::create($data12);
+        Stock::create($data13);
+        Stock::create($data14);
+        Stock::create($data15);
     }
 }

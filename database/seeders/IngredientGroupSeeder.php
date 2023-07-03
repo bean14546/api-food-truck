@@ -19,10 +19,18 @@ class IngredientGroupSeeder extends Seeder
             'ingredientGroup' => 'วัตถุดิบสำหรับทำอาหาร'
         ];
         $data2 = [
-            'ingredientGroup' => 'เครื่องดื่ม'
+            'ingredientGroup' => 'วัตถุดิบสำหรับของหวาน'
+        ];
+        $data3 = [
+            'ingredientGroup' => 'วัตถุดิบสำหรับผลไม้'
+        ];
+        $data4 = [
+            'ingredientGroup' => 'วัตถุดิบสำหรับเครื่องดื่ม'
         ];
 
         IngredientGroup::create($data1);
         IngredientGroup::create($data2);
+        IngredientGroup::create($data3);
+        IngredientGroup::create($data4);
     }
 }
