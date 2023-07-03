@@ -21,6 +21,6 @@ class Category extends Model
     // 1 category มีได้หลาย food
     public function food()
     {
-        return $this->belongsToMany(Food::class);
+        return $this->hasMany(Food::class);
     } 
 }
