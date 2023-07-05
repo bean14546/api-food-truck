@@ -98,15 +98,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('foodTopping/create', [FoodToppingController::class, 'createFoodTopping']);
     Route::put('foodTopping/update/{id}', [FoodToppingController::class, 'updateFoodTopping']);
     Route::delete('foodTopping/delete/{id}', [FoodToppingController::class, 'deleteFoodTopping']);
-    // Order List Option
-    Route::post('orderListOption/create', [OrderListOptionController::class, 'createOrderListOption']);
-    Route::put('orderListOption/update/{id}', [OrderListOptionController::class, 'updateOrderListOption']);
-    Route::delete('orderListOption/delete/{id}', [OrderListOptionController::class, 'deleteOrderListOption']);
-    // Order List Topping
-    Route::post('orderListTopping/create', [OrderListToppingController::class, 'createOrderListTopping']);
-    Route::put('orderListTopping/update/{id}', [OrderListToppingController::class, 'updateOrderListTopping']);
-    Route::delete('orderListTopping/delete/{id}', [OrderListToppingController::class, 'deleteOrderListTopping']);
-     // Ingredient Group
+    // Ingredient Group
     Route::post('ingredientGroup/create', [IngredientGroupController::class, 'createIngredientGroup']);
     Route::put('ingredientGroup/update/{id}', [IngredientGroupController::class, 'updateIngredientGroup']);
     Route::delete('ingredientGroup/delete/{id}', [IngredientGroupController::class, 'deleteIngredientGroup']);
@@ -210,9 +202,15 @@ Route::delete('orderList/delete/{id}', [OrderListController::class, 'deleteOrder
 // Order List Option
 Route::get('orderListOption/getAll', [OrderListOptionController::class, 'getAllOrderListOption']);
 Route::get('orderListOption/getOne/{id}', [OrderListOptionController::class, 'getOneOrderListOption']);
+Route::post('orderListOption/create', [OrderListOptionController::class, 'createOrderListOption']);
+Route::put('orderListOption/update/{id}', [OrderListOptionController::class, 'updateOrderListOption']);
+Route::delete('orderListOption/delete/{id}', [OrderListOptionController::class, 'deleteOrderListOption']);
 // Order List Topping
 Route::get('orderListTopping/getAll', [OrderListToppingController::class, 'getAllOrderListTopping']);
 Route::get('orderListTopping/getOne/{id}', [OrderListToppingController::class, 'getOneOrderListTopping']);
+Route::post('orderListTopping/create', [OrderListToppingController::class, 'createOrderListTopping']);
+Route::put('orderListTopping/update/{id}', [OrderListToppingController::class, 'updateOrderListTopping']);
+Route::delete('orderListTopping/delete/{id}', [OrderListToppingController::class, 'deleteOrderListTopping']);
 // Log Stock Date
 Route::get('logDateStock/getAll', [LogDateStockController::class, 'getAllLogDateStock']);
 Route::get('logDateStock/getOne/{id}', [LogDateStockController::class, 'getOneLogDateStock']);

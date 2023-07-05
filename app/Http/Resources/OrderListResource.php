@@ -41,12 +41,12 @@ class OrderListResource extends JsonResource
             // "order_id" => $this->order_id,
             "order_list_status_id" => $this->orderListStatus->id,
             "Food" => $this->food, // ฟังก์ชั่น
-            "Option" => collect($option)
+            "Options" => collect($option)
                 ->groupBy('option_id')
                 ->map(function ($group) {
                     return [
                         'Option_Name' => $group[0]->Option_Name,
-                        'Option_Details' => $group,
+                        'Option_Details' => $group[0]
                     ];
                 })
                 ->values()
