@@ -35,7 +35,7 @@ class ToppingController extends Controller
     {
         $response = [
             'status' => 'Success',
-            'data' =>   Topping::whereIn('Topping_Id', [$id])->get()
+            'data' =>   Topping::whereIn('id', [$id])->first()
         ];
 
         return response($response, 200);

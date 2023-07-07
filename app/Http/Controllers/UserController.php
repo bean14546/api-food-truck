@@ -22,10 +22,9 @@ class UserController extends Controller
         return response($response, 200);
     }
 
-    public function getOneUser(User $id)
+    public function getOneUser($id)
     {
-        $user = new UserResource($id);
-
+        $user = User::whereIn('id', [$id])->first();
         $response = [
             'status' => 'Success',
             'data' => $user
