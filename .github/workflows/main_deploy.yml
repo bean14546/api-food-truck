@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Laravel to Azure Web App - food-truck
+name: Build and deploy Food Truck Final Project to Azure Web App - food-truck-backend-api
 
 on:
   push:
